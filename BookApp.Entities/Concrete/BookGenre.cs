@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BookApp.Entities.Concrete
 {
-    public class GenreBook
+    public class BookGenre
     {
         public int BookId { get; set; }
         public Book Book { get; set; }

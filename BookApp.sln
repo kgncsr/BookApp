@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookApp.Entities", "BookApp.Entities\BookApp.Entities.csproj", "{B7228FDC-C640-4CD2-9000-88DF3D16447A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApp.Entities", "BookApp.Entities\BookApp.Entities.csproj", "{B7228FDC-C640-4CD2-9000-88DF3D16447A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookApp.DataAccess", "BookApp.DataAccess\BookApp.DataAccess.csproj", "{D8F59EAC-802C-433C-B706-D2611BEE4B35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApp.DataAccess", "BookApp.DataAccess\BookApp.DataAccess.csproj", "{D8F59EAC-802C-433C-B706-D2611BEE4B35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookApp.Business", "BookApp.Business\BookApp.Business.csproj", "{B6405C8F-D7E7-4EEF-A837-69C51E43D4DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApp.Business", "BookApp.Business\BookApp.Business.csproj", "{B6405C8F-D7E7-4EEF-A837-69C51E43D4DE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D8F59EAC-802C-433C-B706-D2611BEE4B35} = {D8F59EAC-802C-433C-B706-D2611BEE4B35}
+		{B7228FDC-C640-4CD2-9000-88DF3D16447A} = {B7228FDC-C640-4CD2-9000-88DF3D16447A}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookApp.WebUI", "BookApp.WebUI\BookApp.WebUI.csproj", "{9EEF7869-FA78-400F-B64D-18FD64F8AD25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookApp.WebUI", "BookApp.WebUI\BookApp.WebUI.csproj", "{9EEF7869-FA78-400F-B64D-18FD64F8AD25}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D8F59EAC-802C-433C-B706-D2611BEE4B35} = {D8F59EAC-802C-433C-B706-D2611BEE4B35}
+		{B7228FDC-C640-4CD2-9000-88DF3D16447A} = {B7228FDC-C640-4CD2-9000-88DF3D16447A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
