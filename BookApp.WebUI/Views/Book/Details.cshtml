@@ -11,7 +11,7 @@
                 <h6 class="card-title">Yazar : @Model.Book.Writer.Name</h6>
                 @foreach (var item in Model.Categories)
                 {
-                    <a href="/">@item.Name</a>
+                    <a href="/">@item.Name</a> 
                 }
                 <p class="card-text">@Html.Raw(Model.Book.Description)</p>
   
