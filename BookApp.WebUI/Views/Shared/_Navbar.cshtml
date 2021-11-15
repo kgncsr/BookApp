@@ -1,0 +1,31 @@
+﻿
+<nav class="navbar navbar-expand-lg navbar-primary bg-light">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <a href="/" class="navbar-brand">BookApp</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="/movies/list" class="nav-link">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/moviecreate" class="nav-link">Admin Create Books</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/movielist" class="nav-link">Admin Books</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/genrelist" class="nav-link">Admin Genres</a>
+                </li>
+            </ul>   
+            
+            <form action="Book/Search" method="get" class="d-flex">
+                <input type="text" name="q" placeholder="Film Ara" class="form-control me-2"/>
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Bul</button>
+            </form>
+
+        </div>
+    </div>
+</nav>

@@ -2,10 +2,23 @@
 
 namespace BookApp.DataAccess.Migrations
 {
-    public partial class initcreate : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Writers",
+                columns: table => new
+                {
+                    WriterId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Writers", x => x.WriterId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Books",
                 columns: table => new
@@ -14,15 +27,22 @@ namespace BookApp.DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(168)", maxLength: 168, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WriterId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Books", x => x.BookId);
+                    table.ForeignKey(
+                        name: "FK_Books_Writers_WriterId",
+                        column: x => x.WriterId,
+                        principalTable: "Writers",
+                        principalColumn: "WriterId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "GName",
+                name: "Genres",
                 columns: table => new
                 {
                     GenreId = table.Column<int>(type: "int", nullable: false)
@@ -32,9 +52,9 @@ namespace BookApp.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GName", x => x.GenreId);
+                    table.PrimaryKey("PK_Genres", x => x.GenreId);
                     table.ForeignKey(
-                        name: "FK_GName_Books_BookId",
+                        name: "FK_Genres_Books_BookId",
                         column: x => x.BookId,
                         principalTable: "Books",
                         principalColumn: "BookId",
@@ -58,9 +78,9 @@ namespace BookApp.DataAccess.Migrations
                         principalColumn: "BookId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookGenres_GName_GenreId",
+                        name: "FK_BookGenres_Genres_GenreId",
                         column: x => x.GenreId,
-                        principalTable: "GName",
+                        principalTable: "Genres",
                         principalColumn: "GenreId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -71,8 +91,13 @@ namespace BookApp.DataAccess.Migrations
                 column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GName_BookId",
-                table: "GName",
+                name: "IX_Books_WriterId",
+                table: "Books",
+                column: "WriterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Genres_BookId",
+                table: "Genres",
                 column: "BookId");
         }
 
@@ -82,10 +107,13 @@ namespace BookApp.DataAccess.Migrations
                 name: "BookGenres");
 
             migrationBuilder.DropTable(
-                name: "GName");
+                name: "Genres");
 
             migrationBuilder.DropTable(
                 name: "Books");
+
+            migrationBuilder.DropTable(
+                name: "Writers");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace BookApp.DataAccess.Configuration
         public void Configure(EntityTypeBuilder<Genre> builder)
         {
             builder.Property(x => x.Name).IsRequired();
-            //builder.ToTable("GName");
+             //builder.ToTable(name:"Names",schema:"dbo");
         }
     }
 }

@@ -8,5 +8,6 @@ namespace BookApp.Entities.Concrete
     {
         public int GenreId { get; set; }
         public string Name { get; set; }
+        public List<BookGenre> BookGenres { get; set; }
     }
 }

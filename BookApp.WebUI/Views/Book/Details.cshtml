@@ -1,0 +1,22 @@
+﻿@model BookGenreModel
+
+<div class="card">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="/img/@Model.Book.ImageUrl" class="card-img" />
+        </div>
+        <div class="col-md-9">
+            <div class="card-body">
+                <h3 class="card-title">@Model.Book.Title</h3>
+                <h6 class="card-title">Yazar : @Model.Book.Writer.Name</h6>
+                @foreach (var item in Model.Categories)
+                {
+                    <a href="/">@item.Name</a>
+                }
+                <p class="card-text">@Html.Raw(Model.Book.Description)</p>
+  
+
+            </div>
+        </div>
+    </div>
+</div>

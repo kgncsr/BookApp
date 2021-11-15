@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookApp.DataAccess.Migrations
 {
     [DbContext(typeof(BookContext))]
-    [Migration("20211103202614_initcreate")]
-    partial class initcreate
+    [Migration("20211112183233_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("BookApp.Entities.Concrete.Book", b =>
@@ -40,7 +40,12 @@ namespace BookApp.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("WriterId")
+                        .HasColumnType("int");
+
                     b.HasKey("BookId");
+
+                    b.HasIndex("WriterId");
 
                     b.ToTable("Books");
                 });
@@ -78,7 +83,33 @@ namespace BookApp.DataAccess.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("GName");
+                    b.ToTable("Genres");
+                });
+
+            modelBuilder.Entity("BookApp.Entities.Concrete.Writer", b =>
+                {
+                    b.Property<int>("WriterId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("WriterId");
+
+                    b.ToTable("Writers");
+                });
+
+            modelBuilder.Entity("BookApp.Entities.Concrete.Book", b =>
+                {
+                    b.HasOne("BookApp.Entities.Concrete.Writer", "Writer")
+                        .WithMany("Books")
+                        .HasForeignKey("WriterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Writer");
                 });
 
             modelBuilder.Entity("BookApp.Entities.Concrete.BookGenre", b =>
@@ -90,7 +121,7 @@ namespace BookApp.DataAccess.Migrations
                         .IsRequired();
 
                     b.HasOne("BookApp.Entities.Concrete.Genre", "Genre")
-                        .WithMany()
+                        .WithMany("BookGenres")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -110,6 +141,16 @@ namespace BookApp.DataAccess.Migrations
             modelBuilder.Entity("BookApp.Entities.Concrete.Book", b =>
                 {
                     b.Navigation("Genres");
+                });
+
+            modelBuilder.Entity("BookApp.Entities.Concrete.Genre", b =>
+                {
+                    b.Navigation("BookGenres");
+                });
+
+            modelBuilder.Entity("BookApp.Entities.Concrete.Writer", b =>
+                {
+                    b.Navigation("Books");
                 });
 #pragma warning restore 612, 618
         }

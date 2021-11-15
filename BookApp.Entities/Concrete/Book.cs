@@ -10,6 +10,8 @@ namespace BookApp.Entities.Concrete
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
-        public List<Genre> Genres { get; set; }
+        public List<BookGenre> BookGenres { get; set; }
+        public Writer Writer { get; set; }
+        public int WriterId { get; set; }
     }
 }

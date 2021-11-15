@@ -16,6 +16,7 @@ namespace BookApp.DataAccess.Configuration
             builder.Property(x => x.Title).IsRequired();
             builder.Property(x => x.Description).IsRequired();
             builder.Property(x => x.Description).HasMaxLength(168);
+            
 
         }
     }

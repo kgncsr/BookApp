@@ -1,0 +1,10 @@
+﻿
+@model BookListModel
+
+<h1>Kitap Listesi</h1>
+<div id="filmler">
+    @foreach (var book in Model.Books)
+    {
+        @await Html.PartialAsync("_Book", book)
+    }
+</div>
