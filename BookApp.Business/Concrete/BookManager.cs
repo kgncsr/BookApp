@@ -53,5 +53,15 @@ namespace BookApp.Business.Concrete
         {
             return _bookRepository.GetBookWithGenre(id);
         }
+
+        public List<Book> GetBookWithGenreId(int id)
+        {
+            return _bookRepository.GetBooksByCategoryId(id);
+        }
+
+        public List<Book> GetSearchBooks(string s)
+        {
+            return _bookRepository.GetSearchBooks(s);
+        }
     }
 }

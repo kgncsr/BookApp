@@ -8,7 +8,7 @@
             <a href="/" class="navbar-brand">BookApp</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a href="/movies/list" class="nav-link">Books</a>
+                    <a href="/Book/AllList" class="nav-link">Books</a>
                 </li>
                 <li class="nav-item">
                     <a href="/admin/moviecreate" class="nav-link">Admin Create Books</a>
@@ -18,11 +18,11 @@
                 </li>
                 <li class="nav-item">
                     <a href="/admin/genrelist" class="nav-link">Admin Genres</a>
-                </li>
+                </li>       
             </ul>   
             
-            <form action="Book/Search" method="get" class="d-flex">
-                <input type="text" name="q" placeholder="Film Ara" class="form-control me-2"/>
+            <form action="Book/Search"  method="get" class="d-flex">
+                <input type="text" name="s" placeholder="Kitap Ara" class="form-control me-2"/>
                 <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Bul</button>
             </form>
 

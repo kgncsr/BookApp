@@ -18,7 +18,7 @@ namespace BookApp.Business.Concrete
             _genreRepository = genreRepository;
         }
 
-        public List<Genre> GetAll()
+        public List<Genre> GetAllList()
         {
             return _genreRepository.GetAll();
         }

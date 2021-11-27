@@ -9,7 +9,7 @@ namespace BookApp.Business.Abstract
 {
     public interface IGenreService 
     {
-        List<Genre> GetAll();
+        List<Genre> GetAllList();
         Genre GetById(int id);
         void Add(Genre genre);
         void Delete(Genre genre);

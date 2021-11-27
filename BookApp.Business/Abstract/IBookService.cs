@@ -16,5 +16,7 @@ namespace BookApp.Business.Abstract
         void Update(Book book);
         Book GetBookListWriter(int id);
         Book GetBookWithGenre(int id);
+        List<Book> GetBookWithGenreId(int id);
+        List<Book> GetSearchBooks(string s);
     }
 }

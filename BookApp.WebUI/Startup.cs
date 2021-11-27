@@ -21,9 +21,11 @@ namespace BookApp.WebUI
         {
             services.AddScoped<IBookRepository, EfBookRepository>();
             services.AddScoped<IGenreRepository, EfGenreRepository>();
+            services.AddScoped<IWriterRepository, EfWriterRepository>();
 
             services.AddScoped<IBookService, BookManager>();
             services.AddScoped<IGenreService, GenreManager>();
+            services.AddScoped<IWriterService, WriterManager>();
 
             services.AddControllersWithViews();
         }

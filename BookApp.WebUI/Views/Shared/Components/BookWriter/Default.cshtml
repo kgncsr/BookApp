@@ -1,0 +1,17 @@
+﻿@model List<Writer>
+<div class="tech-btm">
+    <h3>Yazarın Diğer Kitapları</h3>
+    <ul class="list-group single">
+        @foreach (var writers in Model)
+        {
+            @foreach (var books in writers.Books)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center ">
+                    @books.Title
+                </li>
+            }
+        }
+
+
+    </ul>
+</div>

@@ -31,5 +31,28 @@ namespace BookApp.DataAccess.Concrete.EntityFramework
                     .FirstOrDefault();
             }
         }
+
+        public List<Book> GetBooksByCategoryId(int id)
+        {
+            using (BookContext bookContext = new())
+            {
+                return bookContext.Books
+                    .Include(a => a.BookGenres)
+                    .ThenInclude(a => a.Genre).Where(a => a.BookGenres.Any(a => a.GenreId == id)).ToList();
+            }
+        }
+
+        public List<Book> GetSearchBooks(string s)
+        {
+            using (BookContext bookContext = new())
+            {
+               var  books = bookContext.Books.Where(i =>
+                  i.Title.ToLower().Contains(s.ToLower()) ||
+                  i.Description.ToLower().Contains(s.ToLower())).ToList();
+                return books;
+            }
+        }
+
+
     }
 }

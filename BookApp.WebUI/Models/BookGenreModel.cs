@@ -10,5 +10,7 @@ namespace BookApp.WebUI.Models
     {
         public Book Book { get; set; }
         public List<Genre> Categories { get; set; }
+     
     }
+
 }
