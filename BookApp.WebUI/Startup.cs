@@ -12,22 +12,28 @@ using BookApp.Business.Concrete;
 using BookApp.DataAccess.Abstract;
 using BookApp.DataAccess.Concrete.EntityFramework;
 
+
 namespace BookApp.WebUI
 {
     public class Startup
     {
 
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IBookRepository, EfBookRepository>();
             services.AddScoped<IGenreRepository, EfGenreRepository>();
             services.AddScoped<IWriterRepository, EfWriterRepository>();
+            services.AddScoped<IContactRepository, EfContactRepository>();
 
             services.AddScoped<IBookService, BookManager>();
             services.AddScoped<IGenreService, GenreManager>();
             services.AddScoped<IWriterService, WriterManager>();
-
+            services.AddScoped<IContactService, ContactManager>();
             services.AddControllersWithViews();
+
+
         }
 
 
@@ -44,9 +50,17 @@ namespace BookApp.WebUI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
+
+
             });
         }
     }

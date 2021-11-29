@@ -12,5 +12,6 @@ namespace BookApp.DataAccess.Abstract
         Book GetBookWithGenre(int id);
         List<Book> GetBooksByCategoryId(int id);
         List<Book> GetSearchBooks(string s);
+        List<Book> GetHighVote();
     }
 }

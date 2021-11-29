@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookApp.Business.Abstract;
 using BookApp.WebUI.Models;
+using X.PagedList;
 
 namespace BookApp.WebUI.Controllers
 {
@@ -17,9 +18,9 @@ namespace BookApp.WebUI.Controllers
             _bookService = bookService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page)
         {
-            var books = _bookService.GetAll();
+            var books = _bookService.GetHighVote();
             var booksmodel = new BookListModel()
             {
                 Books = books

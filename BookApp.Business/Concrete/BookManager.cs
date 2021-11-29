@@ -63,5 +63,10 @@ namespace BookApp.Business.Concrete
         {
             return _bookRepository.GetSearchBooks(s);
         }
+
+        public List<Book> GetHighVote()
+        {
+            return _bookRepository.GetHighVote();
+        }
     }
 }

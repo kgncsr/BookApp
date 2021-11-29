@@ -1,10 +1,15 @@
 ﻿
 @model BookListModel
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
 
-<h1>Kitap Listesi</h1>
+<h1>Puanı 7/10 Kitapların Listesi</h1>
+
 <div id="filmler">
     @foreach (var book in Model.Books)
     {
         @await Html.PartialAsync("_Book", book)
     }
 </div>
+
+@*@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new { page}));*@

@@ -53,6 +53,13 @@ namespace BookApp.DataAccess.Concrete.EntityFramework
             }
         }
 
-
+        public List<Book> GetHighVote()
+        {
+            using (BookContext book = new())
+            {
+                var books = book.Books.Where(x => x.Vote > 7).ToList();
+                return books;
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace BookApp.DataAccess.Context
         public DbSet<Genre> Genres { get; set; }
         public DbSet<BookGenre> BookGenres { get; set; }
         public DbSet<Writer> Writers { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server = DESKTOP-R8THRJK;database = Bookdb; integrated security = true;");

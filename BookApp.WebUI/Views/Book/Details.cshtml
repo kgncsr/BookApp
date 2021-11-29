@@ -45,9 +45,9 @@
                             </div>
                         </div>
 
-                        <h3>
-                            <a href="">@Model.Book.Title </a>
-                        </h3>
+                        <h1>
+                            <a  href="">@Model.Book.Title </a>
+                        </h1>
                         <p>
                             @Model.Book.Description
                         </p>
@@ -58,9 +58,7 @@
                 </div>
                 <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
                     <div class="right-blog-info text-left">
-                        <div class="tech-btm">
-                            <img src="~/CoreBlogTheme/images/banner1.jpg" class="img-fluid" alt="">
-                        </div>
+          
                         @await Component.InvokeAsync("BookWriter", new { id = Model.Book.WriterId })
                         <div class="tech-btm">
                             <h4>Kategoriler</h4>
@@ -68,8 +66,7 @@
                                 @foreach (var item in Model.Categories)
                                 {
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        @item.Name
-                                        <span class="badge badge-primary badge-pill">0</span>
+                                        @item.Name                                
                                     </li>
                                 }
 

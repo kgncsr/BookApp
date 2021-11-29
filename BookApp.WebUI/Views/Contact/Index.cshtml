@@ -1,0 +1,92 @@
+﻿@model ContactModel
+
+<link href="~/CoreBlogTheme/css/contact.css" rel='stylesheet' type='text/css' />
+<body>
+
+    <section class="main-content-w3layouts-agileits">
+
+        <h3 class="tittle">Bize Ulaşın</h3>
+        <p class="sub text-center">Düşünceleriniz bizim için değerli</p>
+        
+        <div class="ad-inf-sec bg-light">
+            <div class="container">
+                <div class="address row">
+
+                    <div class="col-lg-4 address-grid">
+                        <div class="row address-info">
+                            <div class="col-md-4 address-left text-center">
+                                <i class="far fa-map"></i>
+                            </div>
+                            <div class="col-md-8 address-right text-left">
+                                <h6>Address</h6>
+                                <p>
+                                    İstanbul,Türkiye
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4 address-grid">
+                        <div class="row address-info">
+                            <div class="col-md-4 address-left text-center">
+                                <i class="far fa-envelope"></i>
+                            </div>
+                            <div class="col-md-8 address-right text-left">
+                                <h6>Email</h6>
+                                <p>
+                                    Email :
+                                    <a href="mailto:example@email.com"> kagancosar@gamil.com</a>
+
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 address-grid">
+                        <div class="row address-info">
+                            <div class="col-md-4 address-left text-center">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="col-md-8 address-right text-left">
+                                <h6>Telefon</h6>
+                                <p>+5448465733</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="contact_grid_right">
+                <form method="post">
+                    <div class="row contact_left_grid">
+                        <div class="col-md-6 con-left">
+                            <div class="form-group">
+                                <label for="my-2">Adınız</label>
+                                <input class="form-control" type="text" asp-for="UserName" placeholder="Adınızı Girin" >
+                            </div>
+                            <div class="form-group">
+                                <label >Mail Adresiniz</label>
+                                <input class="form-control" type="email" asp-for="Mail" placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="my-2">Konu</label>
+                                <input class="form-control" type="text" asp-for="Subject" placeholder="Konuyu Girin" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 con-right">
+                            <div class="form-group">
+                                <label for="textarea">Mesajınız</label>
+                                <textarea asp-for="Message" placeholder="Mesajınızı Girin"></textarea>
+                            </div>
+                            <input class="form-control" type="submit" value="Gönder">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
