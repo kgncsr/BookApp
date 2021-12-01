@@ -1,0 +1,40 @@
+﻿@model List<BookApp.Entities.Concrete.Book>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<table class="table table   table-striped table-dark table-hover table-bordered">
+    <thead>
+        <tr>
+            <th style="width:40px">#</th>
+            <th style="width:150px">Image</th>
+            <th >Title</th>
+            <th>Yazar</th>
+            <th>Vote</th>
+            <th style="width:300px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookId</td>
+                <td><img src="~/img/@item.ImageUrl" width="80" /></td>
+                <td>@item.Title</td>
+                <td><getWriter book-id="@item.BookId"></getWriter></td>
+                <td>@item.Vote</td>
+                <td>
+                    <a href="/admin/movieupdate/" class="btn btn-primary btn-sm">Update</a>
+
+                    <form action="/Admin/Book/Delete/@item.BookId/" method="post" style="display: inline;">
+                        <input type="hidden" name="movieId" value="" />
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

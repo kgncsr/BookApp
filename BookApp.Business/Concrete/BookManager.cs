@@ -68,5 +68,7 @@ namespace BookApp.Business.Concrete
         {
             return _bookRepository.GetHighVote();
         }
+
+
     }
 }

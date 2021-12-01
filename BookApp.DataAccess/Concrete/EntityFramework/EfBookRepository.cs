@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookApp.DataAccess.Concrete.EntityFramework
 {
-    public class EfBookRepository : EfGenericRepository<Book,BookContext>,IBookRepository
+    public class EfBookRepository : EfGenericRepository<Book, BookContext>, IBookRepository
     {
         public Book GetListWithWriter(int id)
         {
@@ -36,9 +36,14 @@ namespace BookApp.DataAccess.Concrete.EntityFramework
         {
             using (BookContext bookContext = new())
             {
-                return bookContext.Books
+                var books = bookContext.Books.AsQueryable();
+                if (id != 0)
+                {
+                   books =  books
                     .Include(a => a.BookGenres)
-                    .ThenInclude(a => a.Genre).Where(a => a.BookGenres.Any(a => a.GenreId == id)).ToList();
+                    .ThenInclude(a => a.Genre).Where(a => a.BookGenres.Any(a => a.GenreId == id));
+                }
+                return books.ToList();
             }
         }
 
@@ -46,7 +51,7 @@ namespace BookApp.DataAccess.Concrete.EntityFramework
         {
             using (BookContext bookContext = new())
             {
-               var  books = bookContext.Books.Where(i =>
+                var books = bookContext.Books.Where(i =>
                   i.Title.ToLower().Contains(s.ToLower()) ||
                   i.Description.ToLower().Contains(s.ToLower())).ToList();
                 return books;
@@ -61,5 +66,7 @@ namespace BookApp.DataAccess.Concrete.EntityFramework
                 return books;
             }
         }
+
+
     }
 }

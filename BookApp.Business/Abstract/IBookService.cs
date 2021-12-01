@@ -19,5 +19,6 @@ namespace BookApp.Business.Abstract
         List<Book> GetBookWithGenreId(int id);
         List<Book> GetSearchBooks(string s);
         List<Book> GetHighVote();
+
     }
 }

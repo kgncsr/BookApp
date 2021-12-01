@@ -1,0 +1,36 @@
+﻿@model List< BookApp.Entities.Concrete.Genre>
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List</h1>
+<br />
+<table class="table table   table-striped table-dark table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.GenreId</td>
+                <td>@item.Name</td>      
+                <td>
+                    <a href="/admin/movieupdate/" class="btn btn-primary btn-sm">Update</a>
+
+                    <form action="/Admin/Genre/Delete/@item.GenreId/" method="post" style="display: inline;">
+                        <input type="hidden" name="genreId" value="" />
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+     
+</table>
+
