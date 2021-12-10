@@ -13,6 +13,7 @@ namespace BookApp.Business.Abstract
 
 
         List<Writer> GetBlogsByWriter(int id);
+        List<Writer> GetAllList();
 
     }
 }

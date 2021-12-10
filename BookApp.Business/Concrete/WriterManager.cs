@@ -17,6 +17,12 @@ namespace BookApp.Business.Concrete
         {
             _writerRepository = writerRepository;
         }
+
+        public List<Writer> GetAllList()
+        {
+            return _writerRepository.GetAll();
+        }
+
         public List<Writer> GetBlogsByWriter(int id)
         {
            return _writerRepository.GetBlogsByWriter(id);

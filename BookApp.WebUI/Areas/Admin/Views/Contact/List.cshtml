@@ -1,0 +1,32 @@
+﻿@model List<Contact>
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<table class="table table   table-striped table-dark table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>UserName</th>
+            <th>Mail</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>ContactDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ContactId</td>
+                <td>@item.UserName</td>
+                <td>@item.Mail</td>
+                <td>@item.Subject</td>
+                <td>@item.Message</td>
+                <td>@item.ContactDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

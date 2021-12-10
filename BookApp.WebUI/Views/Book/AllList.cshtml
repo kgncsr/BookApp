@@ -1,15 +1,15 @@
 ﻿@model List<Book>
 <div>
 
-        @foreach (var book in Model)
-        {
-            @await Html.PartialAsync("_Book", book)
-        }
-    
+    @foreach (var book in Model)
+    {
+        @await Html.PartialAsync("_Book", book)
+    }
+
 
 </div>
 
 @section CategoryComponent{
-    @await  Component.InvokeAsync("Genre")
+    @await Component.InvokeAsync("Genre")
 }
 

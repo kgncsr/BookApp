@@ -22,5 +22,10 @@ namespace BookApp.Business.Concrete
         {
            _contactRepository.Add(contact);
         }
+
+        public List<Contact> GetAll()
+        {
+            return _contactRepository.GetAll();
+        }
     }
 }

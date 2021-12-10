@@ -11,7 +11,11 @@ using BookApp.Business.Abstract;
 using BookApp.Business.Concrete;
 using BookApp.DataAccess.Abstract;
 using BookApp.DataAccess.Concrete.EntityFramework;
-
+using BookApp.WebUI.Context;
+using Microsoft.EntityFrameworkCore;
+using BookApp.WebUI.Entitiy;
+using BookApp.WebUI.Entity;
+using BookApp.WebUI.CustomValidator;
 
 namespace BookApp.WebUI
 {
@@ -21,6 +25,23 @@ namespace BookApp.WebUI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<IdentityContext>(opt =>
+            {
+                opt.UseSqlServer("server = DESKTOP-R8THRJK;database = Bookdb; integrated security = true;");
+            });
+
+
+            services.AddIdentity<AppUser, AppRole>(opt =>
+            {
+                opt.Password.RequiredLength = 3;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireDigit = false;//0-9
+            })
+            .AddPasswordValidator<CustomPasswordValidator>()
+            .AddEntityFrameworkStores<IdentityContext>();
+
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IBookRepository, EfBookRepository>();
             services.AddScoped<IGenreRepository, EfGenreRepository>();
