@@ -29,19 +29,24 @@ namespace BookApp.WebUI
             {
                 opt.UseSqlServer("server = DESKTOP-R8THRJK;database = Bookdb; integrated security = true;");
             });
+            //Cookie
+            CookieBuilder cookieBuilder = new();
 
-
+            //Identity
             services.AddIdentity<AppUser, AppRole>(opt =>
             {
-                opt.Password.RequiredLength = 3;
+                opt.User.RequireUniqueEmail = true;
+                opt.Password.RequiredLength = 4;
                 opt.Password.RequireNonAlphanumeric = false;
                 opt.Password.RequireLowercase = false;
                 opt.Password.RequireUppercase = false;
                 opt.Password.RequireDigit = false;//0-9
             })
             .AddPasswordValidator<CustomPasswordValidator>()
-            .AddEntityFrameworkStores<IdentityContext>();
-
+            .AddEntityFrameworkStores<IdentityContext>()
+            .AddErrorDescriber<MyIdentityErrorDescriber>();
+            
+            //dependency 
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IBookRepository, EfBookRepository>();
             services.AddScoped<IGenreRepository, EfGenreRepository>();
