@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 using BookApp.Business.Abstract;
 using BookApp.WebUI.Models;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookApp.WebUI.Controllers
 {
+    [AllowAnonymous]
+
     public class HomeController : Controller
     {
         private readonly IBookService _bookService;
@@ -17,8 +20,8 @@ namespace BookApp.WebUI.Controllers
         {
             _bookService = bookService;
         }
-
-        public IActionResult Index(int page)
+      
+        public IActionResult Index()
         {
             var books = _bookService.GetHighVote();
             var booksmodel = new BookListModel()

@@ -16,6 +16,9 @@ using Microsoft.EntityFrameworkCore;
 using BookApp.WebUI.Entitiy;
 using BookApp.WebUI.Entity;
 using BookApp.WebUI.CustomValidator;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace BookApp.WebUI
 {
@@ -29,23 +32,9 @@ namespace BookApp.WebUI
             {
                 opt.UseSqlServer("server = DESKTOP-R8THRJK;database = Bookdb; integrated security = true;");
             });
-            //Cookie
-            CookieBuilder cookieBuilder = new();
 
-            //Identity
-            services.AddIdentity<AppUser, AppRole>(opt =>
-            {
-                opt.User.RequireUniqueEmail = true;
-                opt.Password.RequiredLength = 4;
-                opt.Password.RequireNonAlphanumeric = false;
-                opt.Password.RequireLowercase = false;
-                opt.Password.RequireUppercase = false;
-                opt.Password.RequireDigit = false;//0-9
-            })
-            .AddPasswordValidator<CustomPasswordValidator>()
-            .AddEntityFrameworkStores<IdentityContext>()
-            .AddErrorDescriber<MyIdentityErrorDescriber>();
-            
+
+
             //dependency 
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IBookRepository, EfBookRepository>();
@@ -57,8 +46,39 @@ namespace BookApp.WebUI
             services.AddScoped<IGenreService, GenreManager>();
             services.AddScoped<IWriterService, WriterManager>();
             services.AddScoped<IContactService, ContactManager>();
+
+            //Identity
+            services.AddIdentity<AppUser, AppRole>(opt =>
+            {
+                opt.User.RequireUniqueEmail = true;
+                opt.Password.RequiredLength = 4;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireDigit = false;//0-9
+                opt.Lockout.MaxFailedAccessAttempts = 3;
+            })
+            .AddPasswordValidator<CustomPasswordValidator>()
+            .AddEntityFrameworkStores<IdentityContext>()
+            .AddErrorDescriber<MyIdentityErrorDescriber>();
             services.AddControllersWithViews();
 
+            CookieBuilder cookieBuilder = new CookieBuilder();
+            cookieBuilder.Name = "BookApp";
+            cookieBuilder.HttpOnly = false;
+            cookieBuilder.SameSite = SameSiteMode.Lax;
+            cookieBuilder.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+
+
+            services.ConfigureApplicationCookie(opt =>
+            {
+                opt.LoginPath = "/Account/login";
+                opt.LogoutPath = "/Home/Index";
+                opt.Cookie = cookieBuilder;
+                opt.SlidingExpiration = true;
+                opt.ExpireTimeSpan = System.TimeSpan.FromDays(30);
+
+            });
 
         }
 
@@ -70,7 +90,11 @@ namespace BookApp.WebUI
                 app.UseDeveloperExceptionPage();
             }
             app.UseStatusCodePagesWithReExecute("/ErrorPage/ErrorNotFound", "?code={0}");
+
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
@@ -79,14 +103,10 @@ namespace BookApp.WebUI
                   name: "areas",
                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 );
-
-
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
-
-
             });
         }
     }

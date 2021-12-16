@@ -7,18 +7,34 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
             <a href="/" class="navbar-brand">BookApp</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
                 <li class="nav-item">
-                    <a href="/Book/AllList" class="nav-link">Books</a>
+                    <a asp-action="Index" asp-controller="Contact" class="nav-link">İletişim</a>
                 </li>
-                <li class="nav-item">
-                    <a href="/Admin/Book/List" class="nav-link">Book List</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Admin/Genre/List" class="nav-link">Genre List</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Contact/Index" class="nav-link">İletişim</a>
-                </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a asp-controller="Book" asp-action="AllList" class="nav-link">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Admin/Book/List" class="nav-link">Book List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Admin/Genre/List" class="nav-link">Genre List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="LogOut" asp-controller="Account" class="nav-link">LogOut</a>
+                    </li>
+            }
+            else
+            {
+                    <li class="nav-item">
+                        <a asp-action="LogIn" asp-controller="Account" class="nav-link">SıgnIn</a>
+                    </li>
+            }
+
+             
 
             </ul>
             <form action="Book/Search" method="get" class="d-flex">

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookApp.Business.Abstract;
 using BookApp.WebUI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace BookApp.WebUI.Controllers
 {
+    [Authorize]
     public class BookController : Controller
     {
         private readonly IBookService _bookService;

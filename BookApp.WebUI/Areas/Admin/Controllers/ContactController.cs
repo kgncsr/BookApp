@@ -1,4 +1,5 @@
 ﻿using BookApp.Business.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookApp.WebUI.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class ContactController : Controller
     {

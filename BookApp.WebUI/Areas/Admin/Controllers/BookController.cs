@@ -1,6 +1,7 @@
 ﻿using BookApp.Business.Abstract;
 using BookApp.Entities.Concrete;
 using BookApp.WebUI.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace BookApp.WebUI.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class BookController : Controller
     {

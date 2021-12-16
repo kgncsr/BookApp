@@ -3,6 +3,7 @@ using BookApp.Business.Abstract;
 using BookApp.Entities.Concrete;
 using BookApp.WebUI.Mapping;
 using BookApp.WebUI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace BookApp.WebUI.Controllers
 {
+
     public class ContactController : Controller
     {
         private IContactService _contactService;
