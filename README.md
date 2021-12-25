@@ -14,5 +14,6 @@ Proje boyunca kullandığım ana sınıflarımı burada tutuyorum.
 DataAccess Layer
 
 Bu katmanda veritabanı işlemlerimi yapıyorum.Veri cekme silme güncelleme... gibi.ORM olarak Entity Framework Core kullandım.Veritabanını da code first yapısıyla olusturdum.
+
 ![data2](https://user-images.githubusercontent.com/69785776/147384380-e2042c91-41ce-43d7-9829-5e007a9e3f76.png)
 
