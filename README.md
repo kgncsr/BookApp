@@ -26,6 +26,6 @@ Bu katmanda data access tarafından verileri cekiyorum ve burda validasyonların
 
 ***WebUI Layer***
 
-Presentation olarak geçen bu katmanda businesstan gelen veriyi  controller view model yapısını kulanıyorum. Entitilere direk ulasmak yerine model sınıfında kendi entitilerimi yazıp controllerda auto mapping kütüphanesiyle mappleme yapıyorum.Kullanıcı işlemleri için AspNetCore.Identity kütüphanesini kullandım.Projede controllerlar büyüdükçe daha karmasık yapı oluşacağı için areas yapısıyla bir nevi proje icinde proje olusturup daha yönetilebilir yapı kuruyorum.
+Presentation olarak geçen bu katmanda businesstan gelen veriye ulasıyorum. Controller, View ve Model yapısını kulanıyorum. Entitilere direk ulasmak yerine model sınıfında kendi entitilerimi yazıp controllerda auto mapping kütüphanesiyle mappleme yapıyorum.Kullanıcı işlemleri için AspNetCore.Identity kütüphanesini kullandım.Projede controllerlar büyüdükçe daha karmasık yapı oluşacağı için areas yapısıyla bir nevi proje icinde proje olusturup daha yönetilebilir yapı kuruyorum.
 
 ![uı1](https://user-images.githubusercontent.com/69785776/147385582-2d0648e1-9426-49e6-bfd8-d3e9843b747e.png)
