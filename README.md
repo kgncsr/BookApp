@@ -6,7 +6,7 @@ Proje Asp Core Mvc ile yazılmıs Entities, DataAccess, Business ve MVCUI katman
 ---------------------------------------------------------------------------------------------------------------------------------
 ⭐Katmanlar
 
-Entities Layer 
+***Entities Layer*** 
 
 Proje boyunca kullandığım ana sınıflarımı burada tutuyorum.
 
