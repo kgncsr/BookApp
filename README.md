@@ -30,7 +30,7 @@ Presentation olarak geçen bu katmanda businesstan gelen veriye ulasıyorum. Con
 
 ![uı1](https://user-images.githubusercontent.com/69785776/147385582-2d0648e1-9426-49e6-bfd8-d3e9843b747e.png)
 
-⭐Sql
+⭐MsSql
 
 ![sql](https://user-images.githubusercontent.com/69785776/147385687-1678943b-4ead-4abd-89d1-c00fbf9684b1.PNG)
 
