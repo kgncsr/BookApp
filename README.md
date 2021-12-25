@@ -20,6 +20,6 @@ Bu katmanda veritabanı işlemlerimi yapıyorum.Veri cekme silme güncelleme... 
 
 Business Layer
 
-Bu katmanda data access tarafından verileri cekiyorum ve burda validasyonlarını yapıp Uı'a gönderiyorum 
+Bu katmanda data access tarafından verileri cekiyorum ve burda validasyonlarını yapıp Uı'a gönderiyorum veya uı dan gelen verileri validasyona sokup data katmanına gönderiyorum
 
 ![busines](https://user-images.githubusercontent.com/69785776/147384651-7deec68f-ceab-4fc7-a69a-e6033bfbd5a2.PNG)
