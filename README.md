@@ -23,3 +23,9 @@ Bu katmanda veritabanı işlemlerimi yapıyorum.Veri cekme silme güncelleme... 
 Bu katmanda data access tarafından verileri cekiyorum ve burda validasyonlarını yapıp Uı'a gönderiyorum veya uı dan gelen verileri validasyona sokup data katmanına gönderiyorum
 
 ![busines](https://user-images.githubusercontent.com/69785776/147384651-7deec68f-ceab-4fc7-a69a-e6033bfbd5a2.PNG)
+
+***WebUI Layer***
+
+Presentation olarak geçen bu katmanda businesstan gelen veriyi  controller view model yapısını kulanıyorum. Entitilere direk ulasmak yerine model sınıfında kendi entitilerimi yazıp controllerda auto mapping kütüphanesiyle mappleme yapıyorum.Kullanıcı işlemleri için AspNetCore.Identity kütüphanesini kullandım.Projede controllerlar büyüdükçe daha karmasık yapı oluşacağı için areas yapısıyla bir nevi proje icinde proje olusturup daha yönetilebilir yapı kuruyorum.
+
+![uı1](https://user-images.githubusercontent.com/69785776/147385582-2d0648e1-9426-49e6-bfd8-d3e9843b747e.png)
