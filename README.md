@@ -1,7 +1,7 @@
 ⭐ Introductio
 ---------------------------------------------------------------------------------------------------------------------------------
 
-Entities, DataAccess, Business ve MVCUI katmanlarından oluşan kitap projesidir.
+Proje Asp Core Mvc ile yazılmıs Entities, DataAccess, Business ve MVCUI katmanlarından oluşan kitap projesidir.
 
 ---------------------------------------------------------------------------------------------------------------------------------
 ⭐Katmanlar
