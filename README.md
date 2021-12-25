@@ -8,5 +8,5 @@ Entities, DataAccess, Business ve MVCUI katmanlarından oluşan kitap projesidir
 
 Entities Katmanı 
 
-![Entitites](https://user-images.githubusercontent.com/69785776/147384007-53d54b3a-7c3d-4070-8ad1-3259ddeb64fb.PNG)
+![entities1](https://user-images.githubusercontent.com/69785776/147384077-93c649a8-b22e-4a62-b25a-d59c1336c2f3.png)
 
