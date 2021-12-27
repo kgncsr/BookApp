@@ -81,10 +81,10 @@ namespace BookApp.WebUI.Controllers
 
                 if (user != null)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, true);
+                    var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe,true);
                     if (result.Succeeded)
                     {
-
+                        //await _userManager.ResetAccessFailedCountAsync(user);
                         if (TempData["ReturnUrl"] != null)
                         {
                             return Redirect(TempData["ReturnUrl"].ToString());
@@ -97,12 +97,14 @@ namespace BookApp.WebUI.Controllers
                     }
                     else
                     {
+                         //await _userManager.AccessFailedAsync(user); true yapmasaydım
                         var failedCount = await _userManager.GetAccessFailedCountAsync(user);
-                        ModelState.AddModelError("", $"{(_userManager.Options.Lockout.MaxFailedAccessAttempts - failedCount)}kadar hakınız kaldı");
+                        ModelState.AddModelError("", $"{(_userManager.Options.Lockout.MaxFailedAccessAttempts - failedCount)} kez deneme hakkınız kaldı.");
                     }
                 }
                 else
                 {
+              
                     ModelState.AddModelError("", "Mail veya şifre yanlış");
                 }
             }
@@ -113,10 +115,14 @@ namespace BookApp.WebUI.Controllers
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("LogIn","Account");
         }
 
+        public IActionResult AccessDenied()
+        {
 
+            return Content("Bu Sayfayı açmaya yetkiniz yoktur.");
+        }
     }
 }
 

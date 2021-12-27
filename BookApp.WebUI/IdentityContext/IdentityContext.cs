@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookApp.WebUI.Context
 {
-    public class IdentityContext : IdentityDbContext<AppUser, AppRole, int>
+    public class IdentityContext : IdentityDbContext<AppUser, AppRole,string>
     {
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
         {

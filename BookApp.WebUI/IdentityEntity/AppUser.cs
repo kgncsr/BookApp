@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookApp.WebUI.Entitiy
 {
-    public class AppUser : IdentityUser<int>
+    public class AppUser : IdentityUser
     {
         public string Genre { get; set; }
     }

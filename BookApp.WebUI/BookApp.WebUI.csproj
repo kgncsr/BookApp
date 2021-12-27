@@ -40,8 +40,4 @@
 		<ProjectReference Include="..\BookApp.Entities\BookApp.Entities.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Areas\Admin\Data\" />
-	</ItemGroup>
-
 </Project>

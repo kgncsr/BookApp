@@ -9,6 +9,7 @@ namespace BookApp.WebUI.CustomValidator
 {
     public class CustomPasswordValidator : IPasswordValidator<AppUser>
     {
+        
         public Task<IdentityResult> ValidateAsync(UserManager<AppUser> manager, AppUser user, string password)
         {
             List<IdentityError> identityErrors = new();
@@ -24,14 +25,16 @@ namespace BookApp.WebUI.CustomValidator
             }
 
 
-            if (identityErrors.Count()==0)
-            {
-                return Task.FromResult(IdentityResult.Success);
-            }
-            else
-            {
-                return Task.FromResult(IdentityResult.Failed(identityErrors.ToArray()));
-            }
+            return Task.FromResult(!identityErrors.Any() ? IdentityResult.Success : IdentityResult.Failed(identityErrors.ToArray()));
+
+            //if (!identityErrors.Any())
+            //{
+            //    return Task.FromResult(IdentityResult.Success);
+            //}
+            //else
+            //{
+            //    return Task.FromResult(IdentityResult.Failed(identityErrors.ToArray()));
+            //}
         }
     }
 }

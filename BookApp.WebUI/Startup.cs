@@ -34,7 +34,6 @@ namespace BookApp.WebUI
             });
 
 
-
             //dependency 
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IBookRepository, EfBookRepository>();
@@ -59,8 +58,8 @@ namespace BookApp.WebUI
                 opt.Lockout.MaxFailedAccessAttempts = 3;
             })
             .AddPasswordValidator<CustomPasswordValidator>()
-            .AddEntityFrameworkStores<IdentityContext>()
-            .AddErrorDescriber<MyIdentityErrorDescriber>();
+            .AddErrorDescriber<MyIdentityErrorDescriber>()
+            .AddEntityFrameworkStores<IdentityContext>();
             services.AddControllersWithViews();
 
             CookieBuilder cookieBuilder = new CookieBuilder();
@@ -72,8 +71,9 @@ namespace BookApp.WebUI
 
             services.ConfigureApplicationCookie(opt =>
             {
-                opt.LoginPath = "/Account/login";
-                opt.LogoutPath = "/Home/Index";
+                opt.AccessDeniedPath = "/Account/AccessDenied";
+                //opt.LoginPath = "/Account/login";
+                //opt.LogoutPath = "/Home/Index";
                 opt.Cookie = cookieBuilder;
                 opt.SlidingExpiration = true;
                 opt.ExpireTimeSpan = System.TimeSpan.FromDays(30);
@@ -81,8 +81,6 @@ namespace BookApp.WebUI
             });
 
         }
-
-
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

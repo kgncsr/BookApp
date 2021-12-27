@@ -10,8 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BookApp.WebUI.Controllers
 {
-    [AllowAnonymous]
-
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IBookService _bookService;

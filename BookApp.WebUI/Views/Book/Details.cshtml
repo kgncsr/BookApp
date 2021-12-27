@@ -38,7 +38,7 @@
                                 <ul>
                                     <li>
                                         <a href="#">
-                                            <i class="far fa-calendar-alt"></i>@DateTime.Today
+                                            <i class="far fa-calendar-alt"></i>@Model.Book.Writer.Name
                                         </a>
                                     </li>
                                 </ul>
@@ -53,8 +53,7 @@
                         </p>
                         <a asp-action="AllList" asp-controller="Book" class="btn btn-primary list-group">Blog Listesi</a>
                     </div>
-                    @*@await Component.InvokeAsync("CommentListByBlog", new { id = @ViewBag.blogId })*@
-                    @*@await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml")*@
+         
                 </div>
                 <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
                     <div class="right-blog-info text-left">

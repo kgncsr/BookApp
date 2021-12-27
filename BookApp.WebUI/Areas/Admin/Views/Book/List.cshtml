@@ -1,12 +1,12 @@
 ﻿@model List<Book>
 @{
     ViewData["Title"] = "List";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <br />
 
-<table class="table table   table-striped table-dark table-hover table-bordered">
+<table class="table table   table-striped table-light table-hover table-bordered">
     <thead>
         <tr>
             <th style="width:40px">#</th>
@@ -23,11 +23,11 @@
             <tr>
                 <td>@item.BookId</td>
                 <td><img src="~/img/@item.ImageUrl" width="80" /></td>
-                <td>@item.Title</td>
+                <td class="text-dark">@item.Title</td>
                 <td><getWriter book-id="@item.BookId"></getWriter></td>
                 <td>@item.Vote</td>
                 <td>
-                    <a href="/admin/movieupdate/" class="btn btn-primary btn-sm">Update</a>
+                    <a href="/admin/movieupdate/" class="btun btn-primary btn-sm">Update</a>
 
                     <form action="/Admin/Book/Delete/@item.BookId/" method="post" style="display: inline;">
                         <input type="hidden" name="movieId" value="" />

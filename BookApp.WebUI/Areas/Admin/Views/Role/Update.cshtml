@@ -1,0 +1,64 @@
+﻿@model BookApp.WebUI.Areas.Admin.Models.UpdateAppRoleViewModel
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<br />
+
+<div class="col-md-8">
+    <form method="POST" action="/Admin/Role/Update">
+        <input class="form-control" asp-for="@Model.Id" type="hidden">
+        <div asp-validation-summary="All"></div>
+        @*<div class="form-group row">
+                <label asp-for="Id" class="col-sm-2 col-form-label">Role Id</label>
+                <div class="col-sm-10">
+                    <input class="form-control" value="@Model.Id">
+                </div>
+            </div>*@
+        <div class="form-group row">
+           <label asp-for="@Model.RoleName" class="col-sm-2 col-form-label"><h4>Name</h4></label>
+            <div class="col-sm-10">
+                <input class="form-control" asp-for="@Model.RoleName">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Users in this role</h3>
+            </div>
+            <div class="card-body">
+                @if (Model.Users.Any())
+                {
+                    foreach (var user in Model.Users)
+                    {
+                        <h5 class="card-title">@user</h5>
+                    }
+                }
+                else
+                {
+                    <h5 class="card-title">None at the moment</h5>
+                }
+            </div>
+            <div class="card-footer">
+                <a asp-controller="Role" asp-action="UpdateUsersInRole"
+                   asp-route-roleId="@Model.Id" class="btn btn-primary" style="width:auto">Add Users Role</a>
+            </div>
+        </div>
+
+
+    </form>
+
+
+
+</div>
+

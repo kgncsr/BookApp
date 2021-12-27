@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookApp.WebUI.Entity
 {
-    public class AppRole : IdentityRole<int>
+    public class AppRole : IdentityRole
     {
        
     }

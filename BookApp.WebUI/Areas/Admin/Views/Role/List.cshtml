@@ -1,0 +1,40 @@
+﻿@model List<BookApp.WebUI.Entity.AppRole>
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="text-md-left text-center">
+    <h1>Roller Listesi</h1>
+    <br /> 
+    <h4><a href="/Admin/Role/Create">Rol Oluştur</a></h4>
+</div>
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th scope="col">Name</th>
+            <th scope="col">Güncelle</th>
+            <th scope="col">Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td><h4>@item.Name</h4></td>
+            <td><a href="/Admin/Role/Update/@item.Id" class="btn btn-success">Güncelle</a></td>
+            <td>
+                <form asp-controller="Role" asp-action="Delete" asp-route-id="@item.Id" method="post">
+
+                    <button class="btn btn-danger" type="submit">sil</button>
+                </form>
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
