@@ -35,16 +35,16 @@ namespace BookApp.WebUI
 
 
             //dependency 
-            services.AddAutoMapper(typeof(Startup));
-            services.AddScoped<IBookRepository, EfBookRepository>();
-            services.AddScoped<IGenreRepository, EfGenreRepository>();
-            services.AddScoped<IWriterRepository, EfWriterRepository>();
-            services.AddScoped<IContactRepository, EfContactRepository>();
+            //services.AddAutoMapper(typeof(Startup));
+            //services.AddScoped<IBookRepository, EfBookRepository>();
+            //services.AddScoped<IGenreRepository, EfGenreRepository>();
+            //services.AddScoped<IWriterRepository, EfWriterRepository>();
+            //services.AddScoped<IContactRepository, EfContactRepository>();
 
-            services.AddScoped<IBookService, BookManager>();
-            services.AddScoped<IGenreService, GenreManager>();
-            services.AddScoped<IWriterService, WriterManager>();
-            services.AddScoped<IContactService, ContactManager>();
+            //services.AddScoped<IBookService, BookManager>();
+            //services.AddScoped<IGenreService, GenreManager>();
+            //services.AddScoped<IWriterService, WriterManager>();
+            //services.AddScoped<IContactService, ContactManager>();
 
             //Identity
             services.AddIdentity<AppUser, AppRole>(opt =>
